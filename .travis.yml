@@ -7,7 +7,7 @@ go:
 before_script:
   - make govendor
   # setup wotreplay files for test
-  - wget --directory-prefix=_replays -i _replays/list.txt
+  - wget --content-disposition --directory-prefix=_replays -i _replays/samples.txt
 
 script:
   - make test

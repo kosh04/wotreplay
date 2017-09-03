@@ -2,7 +2,7 @@
 
 [World of Tanks](https://worldoftanks.com/) Replay Parser (written in Go)
 
-**This package is work in progress**
+*This package is work in progress*
 
 ## Usage
 

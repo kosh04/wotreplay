@@ -16,3 +16,6 @@
 # Vendoring (+govendor)
 vendor/*/
 !vendor/vendor.json
+
+# wotreplay samples
+_replays/*.wotreplay
