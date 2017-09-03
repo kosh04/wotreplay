@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - 1.7
+  - 1.x
+
+before_script:
+  - make govendor
+  # setup wotreplay files for test
+  - wget --directory-prefix=_replays -i _replays/list.txt
+
+script:
+  - make test

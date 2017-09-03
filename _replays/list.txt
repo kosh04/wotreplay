@@ -1,0 +1,3 @@
+# Sample wotreplay files
+# e.g. http://wotreplays.com/
+http://wotreplays.com/site/download/3739193
