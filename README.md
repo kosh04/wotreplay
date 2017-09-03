@@ -1,5 +1,8 @@
 # WoTReplay
 
+[![Build Status](https://travis-ci.org/kosh04/wotreplay.svg?branch=master)](https://travis-ci.org/kosh04/wotreplay)
+[![GoDoc](https://godoc.org/github.com/kosh04/wotreplay?status.svg)](https://godoc.org/github.com/kosh04/wotreplay)
+
 [World of Tanks](https://worldoftanks.com/) Replay Parser (written in Go)
 
 *This package is work in progress*
