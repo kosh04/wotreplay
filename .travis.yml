@@ -6,6 +6,7 @@ go:
 
 before_script:
   - make govendor
+  - mkdir -p $HOME/.wine/drive_c/Games/World_of_Tanks/replays
   # setup wotreplay files for test
   - wget --content-disposition --directory-prefix=_replays -i _replays/samples.txt
 
