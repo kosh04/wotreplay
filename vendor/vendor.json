@@ -3,16 +3,16 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "Lnv1MZJu56aDzs5/EebdCuq3OFI=",
+			"checksumSHA1": "V/quM7+em2ByJbWBLOsEwnY3j/Q=",
 			"path": "github.com/mitchellh/go-homedir",
-			"revision": "981ab348d865cf048eb7d17e78ac7192632d8415",
-			"revisionTime": "2016-03-01T18:31:30Z"
+			"revision": "b8bc1bf767474819792c23f32d8286a45736f1c6",
+			"revisionTime": "2016-12-03T19:45:07Z"
 		},
 		{
-			"checksumSHA1": "JsJdKXhz87gWenMwBeejTOeNE7k=",
+			"checksumSHA1": "oVPHWesOmZ02vLq2fglGvf+AMgk=",
 			"path": "golang.org/x/crypto/blowfish",
-			"revision": "e7ba82683099cae71475961448ab8f903ea77c26",
-			"revisionTime": "2017-06-03T05:13:44Z"
+			"revision": "81e90905daefcd6fd217b62423c0908922eadb30",
+			"revisionTime": "2017-08-25T20:24:07Z"
 		}
 	],
 	"rootPath": "github.com/kosh04/wotreplay"

@@ -13,27 +13,27 @@
 
     $ wotreplay-parse [-out FILE] *.wotreplay
 
-    $ wotreplay-parse somefile.wotreplay
+    $ wotreplay-parse FILE.wotreplay
     {
-	    "Date": "08.06.2017 04:52:35",
-	    "Map": "聖なる谷",
-	    "Gamemode": "Random",
-	    "Reason": "Extermination",
-	    "Tank": "ussr-R41_T-50",
-	    "Player": "kosh04",
-	    "Version": "World of Tanks v.0.9.19.0.1 #450"
+        "Date": "08.06.2017 04:52:35",
+        "Map": "聖なる谷",
+        "Gamemode": "Random",
+        "Reason": "Extermination",
+        "Tank": "ussr-R41_T-50",
+        "Player": "kosh04",
+        "Version": "World of Tanks v.0.9.19.0.1 #450"
     }
 
 ### Go code
 
     import (
-        "fmt"
-    	"github.com/kosh04/go-wotreplay"
+    	"fmt"
+    	"github.com/kosh04/wotreplay"
     )
     
     r, err := wotreplay.ParseFile("FILE.wotreplay")
     if err != nil {
-        // ParseError
+    	// ParseError
     }
     fmt.Println(r)
 
