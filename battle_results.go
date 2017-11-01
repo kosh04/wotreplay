@@ -1,5 +1,10 @@
 package wotreplay
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // BattleResults is block data about "Battle Result"
 type BattleResults struct {
 	Results  battleResults
@@ -287,12 +292,18 @@ type detail struct {
 type finishReason int
 
 func (x finishReason) String() string {
-	return []string{
-		0: "Unknown",       // (not used)
+	msg := []string{
+		0: "Unknown",       // not used ?
 		1: "Extermination", // 殲滅
 		2: "Base Capture",  // 陣地占領
 		3: "Timeout",       // 時間切れ
 		4: "*Failure",      // *アリーナの初期化ミスあるいは内部エラー
 		5: "*Technical",    // *サーバーの再起動あるいはキャンセル
-	}[int(x)]
+		6: "??",
+	}
+	return fmt.Sprintf("%d:%s", int(x), msg[int(x)])
+}
+
+func (x finishReason) MarshalJSON() ([]byte, error) {
+	return json.Marshal(x.String())
 }

@@ -25,22 +25,3 @@ type MatchStart struct {
 		IsPotapovQuestEnabled bool `json:"isPotapovQuestEnabled"`
 	} `json:"serverSettings"`
 }
-
-type battleType int
-
-// http://wiki.wargaming.net/en/Game_Modes
-func (x battleType) String() string {
-	return []string{
-		0:  "???",
-		1:  "Random",
-		2:  "Training",
-		3:  "Tank Company",
-		4:  "Special Battle",
-		5:  "Clan Wars",
-		6:  "???",
-		7:  "7vs7",
-		8:  "???",
-		9:  "???",
-		10: "Strongholds",
-	}[int(x)]
-}

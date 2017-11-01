@@ -35,6 +35,8 @@ func ParseFile(filename string) (*Replay, error) {
 
 func parse(in io.Reader) (*Replay, error) {
 	r := &Replay{}
+	r.Logger = log.New(os.Stderr, "", log.Lshortfile)
+
 	if err := binary.Read(in, binary.LittleEndian, &r.File.Header); err != nil {
 		return nil, err
 	}
@@ -59,8 +61,14 @@ func parse(in io.Reader) (*Replay, error) {
 		json.Unmarshal(dat[2], &r.BattleResults.Data)
 	}
 	if r.File.Header.BlockCount >= 3 {
-		// TODO
-		r.Logger.Println("INFO: More Blocks to be exist (maybe 'battle_end'):", r.File.Header)
+		// FIXME: How is "Match End" block used?
+		if err := binary.Read(in, binary.LittleEndian, &r.File.Blocks[2].Length); err != nil {
+			return nil, err
+		}
+		r.File.Blocks[2].Data = make([]byte, r.File.Blocks[2].Length)
+		if err := binary.Read(in, binary.LittleEndian, &r.File.Blocks[2].Data); err != nil {
+			return nil, err
+		}
 	}
 
 	// FIXME: Unknown fields (4 + 4 bytes)
@@ -71,6 +79,7 @@ func parse(in io.Reader) (*Replay, error) {
 		return nil, err
 	}
 
+	// Read real replay data
 	raw, err := ioutil.ReadAll(in)
 	if err != nil {
 		return nil, err
@@ -143,7 +152,7 @@ func unpackReplay(raw []byte) ([]byte, error) {
 }
 
 func decompress(b []byte) ([]byte, error) {
-	// First two bytes in hexadecimal should be : 78 DA. ("Best Compression" Header)
+	// First two bytes should be : 78 DA. ("Best Compression" Header)
 	if !bytes.HasPrefix(b, []byte("\x78\xDA")) {
 		log.Printf("WARNING: Unexpected Compressed Header: %#v (want 78 DA) \n", b[0:2])
 	}

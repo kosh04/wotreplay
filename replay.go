@@ -35,9 +35,9 @@ func (r Replay) String() string {
 	b, _ := json.MarshalIndent(struct {
 		Date     string
 		Map      string
-		Gamemode string
+		Gamemode battleType
 		// Result   string
-		Reason  string
+		Reason  finishReason
 		Tank    string
 		Player  string
 		Version string
@@ -46,8 +46,8 @@ func (r Replay) String() string {
 		Map:      r.MatchStart.MapDisplayName,
 		Tank:     r.MatchStart.PlayerVehicle,
 		Player:   r.MatchStart.PlayerName,
-		Gamemode: r.MatchStart.BattleType.String(),
-		Reason:   r.BattleResults.Results.Common.FinishReason.String(),
+		Gamemode: r.MatchStart.BattleType,
+		Reason:   r.BattleResults.Results.Common.FinishReason,
 		Version:  r.MatchStart.ClientVersionFromXML,
 	}, "", "\t")
 	return string(b)

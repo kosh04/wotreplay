@@ -17,8 +17,8 @@
     {
         "Date": "08.06.2017 04:52:35",
         "Map": "聖なる谷",
-        "Gamemode": "Random",
-        "Reason": "Extermination",
+        "Gamemode": "1:Random",
+        "Reason": "1:Extermination",
         "Tank": "ussr-R41_T-50",
         "Player": "kosh04",
         "Version": "World of Tanks v.0.9.19.0.1 #450"
