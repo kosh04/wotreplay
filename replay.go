@@ -11,6 +11,7 @@ const magic = 288633362
 // Replay stores an entire battle in a replay file
 type Replay struct {
 	File struct {
+		//Path   string
 		Header struct {
 			Magic      uint32
 			BlockCount uint32

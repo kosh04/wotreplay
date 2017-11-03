@@ -4,7 +4,7 @@ import "path/filepath"
 
 const extension = ".wotreplay"
 
-// IsReplayFile ask PATH has ".wotreplay" extention
+// IsReplayFile ask PATH has ".wotreplay" extension
 func IsReplayFile(path string) bool {
 	return filepath.Ext(path) == extension
 }

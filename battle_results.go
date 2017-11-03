@@ -299,7 +299,11 @@ func (x finishReason) String() string {
 		3: "Timeout",       // 時間切れ
 		4: "*Failure",      // *アリーナの初期化ミスあるいは内部エラー
 		5: "*Technical",    // *サーバーの再起動あるいはキャンセル
-		6: "??",
+		//9: "?",		    // Boot camp [8-9]
+	}
+	i := int(x)
+	if !(0 <= i && i <= len(msg)) {
+		return fmt.Sprintf("%d:???", i)
 	}
 	return fmt.Sprintf("%d:%s", int(x), msg[int(x)])
 }
