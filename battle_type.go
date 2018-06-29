@@ -27,11 +27,12 @@ func (x battleType) String() string {
 		17: "Proving Ground",
 		22: "Ranked Battle",
 		23: "Boot Camp",
-		24: "Grand Battle", // a.k.a Frontline, 30vs30
+		24: "Grand Battle", // a.k.a 30vs30
 		26: "Halloween 2017",
+		27: "Frontline",
 	}
 	i := int(x)
-	if !(0 <= i && i <= len(msg)) {
+	if !(0 <= i && i < len(msg)) {
 		return fmt.Sprintf("%d:???", i)
 	}
 	return fmt.Sprintf("%d:%s", i, msg[i])
