@@ -6,28 +6,38 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"path/filepath"
 
 	"github.com/kosh04/wotreplay"
 )
 
+// App info
+var (
+	Name    = "wotreplay-parse"
+	Version = "v0.1"
+)
+
 var opt struct {
-	output string
+	output  string
+	version bool
 }
 
 func init() {
 	flag.Usage = func() {
-		progname := filepath.Base(os.Args[0])
-		println("Usage:", progname, "*.wotreplay")
+		println("Usage:", Name, "*.wotreplay")
 		flag.PrintDefaults()
 	}
 	flag.StringVar(&opt.output, "out", "", "Write output replay data to `filename`")
+	flag.BoolVar(&opt.version, "version", false, "Print version")
 }
 
 func main() {
 	flag.Parse()
 	args := flag.Args()
 
+	if opt.version {
+		println(Name, Version)
+		return
+	}
 	if len(args) < 1 {
 		flag.Usage()
 		return

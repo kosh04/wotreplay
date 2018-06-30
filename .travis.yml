@@ -11,4 +11,5 @@ before_script:
   - wget --content-disposition --directory-prefix=_replays -i _replays/samples.txt
 
 script:
-  - make test
+  - make test build
+  - ./bin/wotreplay-parse -version

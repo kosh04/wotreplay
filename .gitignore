@@ -20,3 +20,5 @@ vendor/*/
 # wotreplay samples
 _replays/*.wotreplay
 _data/
+
+bin/

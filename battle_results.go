@@ -24,17 +24,17 @@ type battleResults struct {
 	Avatars  map[vehicleID]avatar     `json:"avatars"`
 	Players  map[vehicleID]player     `json:"players"`
 	Common   struct {
-		Division            interface{}  `json:"division"`
-		FinishReason        finishReason `json:"finishReason"`
-		GuiType             int          `json:"guiType"`
 		ArenaCreateTime     int          `json:"arenaCreateTime"`
 		ArenaTypeID         int          `json:"arenaTypeID"`
-		Duration            int          `json:"duration"`
-		GasAttackWinnerTeam int          `json:"gasAttackWinnerTeam"`
-		WinnerTeam          int          `json:"winnerTeam"`
-		VehLockMode         int          `json:"vehLockMode"`
 		BonusType           int          `json:"bonusType"`
 		Bots                struct{}     `json:"bots"`
+		Division            interface{}  `json:"division"`
+		Duration            int          `json:"duration"`
+		FinishReason        finishReason `json:"finishReason"`
+		GasAttackWinnerTeam int          `json:"gasAttackWinnerTeam"`
+		GuiType             int          `json:"guiType"`
+		VehLockMode         int          `json:"vehLockMode"`
+		WinnerTeam          int          `json:"winnerTeam"`
 	} `json:"common"`
 }
 
@@ -251,11 +251,11 @@ type personalAvatar struct {
 }
 
 type avatar struct {
+	AvatarDamageDealt  int   `json:"avatarDamageDealt"`
+	AvatarDamaged      int   `json:"avatarDamaged"`
+	AvatarKills        int   `json:"avatarKills"`
 	FairplayViolations []int `json:"fairplayViolations"`
 	TotalDamaged       int   `json:"totalDamaged"`
-	AvatarKills        int   `json:"avatarKills"`
-	AvatarDamaged      int   `json:"avatarDamaged"`
-	AvatarDamageDealt  int   `json:"avatarDamageDealt"`
 }
 
 type player struct {
@@ -293,16 +293,19 @@ type finishReason int
 
 func (x finishReason) String() string {
 	msg := []string{
-		0: "Unknown",       // not used ?
-		1: "Extermination", // 殲滅
-		2: "Base Capture",  // 陣地占領
-		3: "Timeout",       // 時間切れ
-		4: "*Failure",      // *アリーナの初期化ミスあるいは内部エラー
-		5: "*Technical",    // *サーバーの再起動あるいはキャンセル
-		//9: "?",		    // Boot camp [8-9]
+		// TODO: '*' means unknown reason yet.
+		0:  "Unknown",       // not used ?
+		1:  "Extermination", // 殲滅
+		2:  "Base Capture",  // 陣地占領
+		3:  "Timeout",       // 時間切れ
+		4:  "*Failure",      // *アリーナの初期化ミスあるいは内部エラー
+		5:  "*Technical",    // *サーバーの再起動あるいはキャンセル
+		8:  "*Success",      // BootCamp
+		9:  "*Failure",      // BootCamp
+		10: "*Victory",      // Frontline
 	}
 	i := int(x)
-	if !(0 <= i && i <= len(msg)) {
+	if !(0 <= i && i < len(msg)) {
 		return fmt.Sprintf("%d:???", i)
 	}
 	return fmt.Sprintf("%d:%s", int(x), msg[int(x)])

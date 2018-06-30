@@ -33,7 +33,7 @@ type dataBlock struct {
 }
 
 func (r Replay) String() string {
-	b, _ := json.MarshalIndent(struct {
+	b, _ := json.Marshal(struct {
 		Date     string
 		Map      string
 		Gamemode battleType
@@ -50,7 +50,7 @@ func (r Replay) String() string {
 		Gamemode: r.MatchStart.BattleType,
 		Reason:   r.BattleResults.Results.Common.FinishReason,
 		Version:  r.MatchStart.ClientVersionFromXML,
-	}, "", "\t")
+	})
 	return string(b)
 }
 
