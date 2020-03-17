@@ -16,7 +16,7 @@ func (x battleType) String() string {
 		3:  "Tank Company",
 		4:  "Special Battle",    // wotreplays say "Tournament"
 		5:  "Clan Wars",         //
-		6:  "???",               //
+		6:  "???",               // Tutorial ?
 		7:  "7vs7",              // Team Battle ?
 		8:  "Historical Battle", //
 		9:  "AprilFool 2014",    // wotreplays say "Soccer"

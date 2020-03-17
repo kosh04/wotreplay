@@ -14,7 +14,7 @@
 
     $ wotreplay-parse [-out FILE] *.wotreplay
 
-    $ wotreplay-parse FILE.wotreplay
+    $ wotreplay-parse FILE.wotreplay | jq .
     {
         "Date": "08.06.2017 04:52:35",
         "Map": "聖なる谷",
@@ -53,6 +53,7 @@
 - https://github.com/Aimdrol/WoT-Replay-Analyzer (exe only)
 - https://github.com/Phalynx/WoT-Replay-To-JSON (Python)
 - https://gist.github.com/benvanstaveren/2402016 (Perl)
+- https://github.com/thesilvervestgroup/wot-replay-parser (PHP)
 
 ## License
 

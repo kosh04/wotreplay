@@ -7,7 +7,7 @@ type MatchStart struct {
 	DateTime             string                `json:"dateTime"`
 	MapDisplayName       string                `json:"mapDisplayName"`
 	MapName              string                `json:"mapName"`
-	GameplayID           string                `json:"gameplayID"`
+	GameplayID           string                `json:"gameplayID"` // assault,assault2,bootcamp,ctf,ctf30x30,domination(encounter),epic,fallout3,football,leviathan,sandbox
 	HasMods              bool                  `json:"hasMods"`
 	RegionCode           string                `json:"regionCode"`
 	PlayerID             int                   `json:"playerID"`

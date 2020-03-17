@@ -34,23 +34,29 @@ type dataBlock struct {
 
 func (r Replay) String() string {
 	b, _ := json.Marshal(struct {
-		Date     string
-		Map      string
-		Gamemode battleType
-		// Result   string
-		Reason  finishReason
-		Tank    string
-		Player  string
-		Version string
+		Date       string
+		Map        string
+		Gamemode   battleType
+		GameplayID string
+		Reason     finishReason
+		Tank       string
+		Player     string
+		Version    string
+		Resion     string
+		Server     string
 	}{
-		Date:     r.MatchStart.DateTime,
-		Map:      r.MatchStart.MapDisplayName,
-		Tank:     r.MatchStart.PlayerVehicle,
-		Player:   r.MatchStart.PlayerName,
-		Gamemode: r.MatchStart.BattleType,
-		Reason:   r.BattleResults.Results.Common.FinishReason,
-		Version:  r.MatchStart.ClientVersionFromXML,
+		Date:       r.MatchStart.DateTime,
+		Map:        r.MatchStart.MapDisplayName,
+		Tank:       r.MatchStart.PlayerVehicle,
+		Player:     r.MatchStart.PlayerName,
+		Gamemode:   r.MatchStart.BattleType,
+		GameplayID: r.MatchStart.GameplayID,
+		Reason:     r.BattleResults.Results.Common.FinishReason,
+		Version:    r.MatchStart.ClientVersionFromXML,
+		Resion:     r.MatchStart.RegionCode,
+		Server:     r.MatchStart.ServerName,
 	})
+	//b, _ = json.Marshal(r)
 	return string(b)
 }
 
