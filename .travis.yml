@@ -1,15 +1,14 @@
 language: go
 
 go:
-  - 1.7
   - 1.x
+  - master
 
 before_script:
   - make govendor
   - mkdir -p $HOME/.wine/drive_c/Games/World_of_Tanks/replays
-  # setup wotreplay files for test
-  - wget --content-disposition --directory-prefix=_replays -i _replays/samples.txt
 
 script:
-  - make test build
+  - make test
+  - make build
   - ./bin/wotreplay-parse -version

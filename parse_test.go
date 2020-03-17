@@ -28,7 +28,7 @@ func TestParseFiles(t *testing.T) {
 	if err := filepath.Walk(replayDir(), walkFunc); err != nil {
 		t.Error(err)
 	}
-	if err := filepath.Walk("_replays", walkFunc); err != nil {
+	if err := filepath.Walk("testdata/replays", walkFunc); err != nil {
 		t.Error(err)
 	}
 	t.Logf("tested %d replay files\n", tested)

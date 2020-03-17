@@ -20,7 +20,7 @@ test:
 	go test -v -cover ./...
 
 test_local: build
-	./$(TARGET) _replays/*.wotreplay
+	./$(TARGET) testdata/replays/*.wotreplay
 
 govendor: $(GOPATH)/bin/govendor
 	govendor sync
