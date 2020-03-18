@@ -63,16 +63,16 @@ func (r Replay) String() string {
 type vehicleID json.Number
 
 type vehicle struct {
-	ForbidInBattleInvitations bool     `json:"forbidInBattleInvitations"`
-	VehicleType               string   `json:"vehicleType"`
-	IsAlive                   bool     `json:"isAlive"`
-	Name                      string   `json:"name"`
-	IgrType                   int      `json:"igrType"`
-	PotapovQuestIDs           []int    `json:"potapovQuestIDs"`
-	ClanAbbrev                string   `json:"clanAbbrev"`
-	Team                      int      `json:"team"`
-	Events                    struct{} `json:"events"`
-	IsTeamKiller              bool     `json:"isTeamKiller"`
+	ForbidInBattleInvitations bool        `json:"forbidInBattleInvitations"`
+	VehicleType               string      `json:"vehicleType"`
+	IsAlive                   interface{} `json:"isAlive"` // bool or int
+	Name                      string      `json:"name"`
+	IgrType                   int         `json:"igrType"`
+	PotapovQuestIDs           []int       `json:"potapovQuestIDs"`
+	ClanAbbrev                string      `json:"clanAbbrev"`
+	Team                      int         `json:"team"`
+	Events                    struct{}    `json:"events"`
+	IsTeamKiller              interface{} `json:"isTeamKiller"` // bool or int
 }
 
 type vehicle2 struct {
