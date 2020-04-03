@@ -1,21 +1,22 @@
-TARGET  := bin/wotreplay-parse
-VERSION := v0.1-$(shell git rev-parse --short HEAD)
-LDFLAGS := -ldflags "-X main.Version=$(VERSION)" #-ldflags "-w -s"
+TARGET   := bin/wotreplay-parse
+VERSION  := $(shell git describe --tag)
+REVISION := $(shell git rev-parse --short HEAD)
+LDFLAGS  := -ldflags "-X main.version=$(VERSION) -X main.revision=$(REVISION)"
+#LDFLAGS += -ldflags "-w -s"
 
 .PHONY: run test test_local build govendor clean
 
 default: test $(TARGET)
 
 run: build
-#	go run ./cmd/wotreplay-parse/main.go
-	./$(TARGET)
+	./$(TARGET) -version
 
 build: $(TARGET)
 
 $(TARGET):
 	go build -gcflags "-N -l" $(LDFLAGS) -o $@ ./cmd/wotreplay-parse
 
-test:
+test: build
 	go vet ./...
 	go test -v -cover ./...
 

@@ -12,8 +12,9 @@ import (
 
 // App info
 var (
-	Name    = "wotreplay-parse"
-	Version = "v0.1.1"
+	name     = "wotreplay-parse"
+	version  = "v0.0.0"
+	revision = "HEAD"
 )
 
 var opt struct {
@@ -23,7 +24,7 @@ var opt struct {
 
 func init() {
 	flag.Usage = func() {
-		println("Usage:", Name, "*.wotreplay")
+		println("Usage:", name, "*.wotreplay")
 		flag.PrintDefaults()
 	}
 	flag.StringVar(&opt.output, "out", "", "Write output replay data to `filename`")
@@ -35,7 +36,7 @@ func main() {
 	args := flag.Args()
 
 	if opt.version {
-		println(Name, Version)
+		fmt.Printf("%s %s (rev:%s)\n", name, version, revision)
 		return
 	}
 	if len(args) < 1 {
