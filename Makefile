@@ -13,7 +13,7 @@ run: build
 build: $(TARGET)
 
 $(TARGET):
-	go build -gcflags "-N -l" $(LDFLAGS) -o $@ ./cmd/wotreplay-parse/main.go
+	go build -gcflags "-N -l" $(LDFLAGS) -o $@ ./cmd/wotreplay-parse
 
 test:
 	go vet ./...

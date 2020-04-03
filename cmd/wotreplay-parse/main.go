@@ -13,7 +13,7 @@ import (
 // App info
 var (
 	Name    = "wotreplay-parse"
-	Version = "v0.1"
+	Version = "v0.1.1"
 )
 
 var opt struct {

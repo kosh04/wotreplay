@@ -1,12 +1,11 @@
 language: go
-
 go:
-  - 1.x
+  - 1.11.x
   - master
-
-before_script:
-  - make govendor
-  - mkdir -p $HOME/.wine/drive_c/Games/World_of_Tanks/replays
+os:
+  - linux
+env:
+  - GO111MODULE=on
 
 script:
   - make test
