@@ -25,11 +25,19 @@ func TestParseFiles(t *testing.T) {
 		tested++
 		return testParseFile(t, path)
 	}
-	if err := filepath.Walk(replayDir(), walkFunc); err != nil {
-		t.Error(err)
+	walk := func(dir string) {
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			t.Log("Skip Directory", err)
+			return
+		}
+		if err := filepath.Walk(dir, walkFunc); err != nil {
+			t.Error(err)
+		}
+
 	}
-	if err := filepath.Walk("testdata/replays", walkFunc); err != nil {
-		t.Error(err)
-	}
+
+	walk(replayDir())
+	walk("testdata/replays")
+
 	t.Logf("tested %d replay files\n", tested)
 }
